@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChildCare Schedules Support</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f8fafc; color: #0f172a; }
+    main { max-width: 820px; margin: 0 auto; padding: 48px 20px 72px; }
+    .card { background: white; border: 1px solid #e2e8f0; border-radius: 20px; padding: 28px; box-shadow: 0 10px 30px rgba(15,23,42,0.06); }
+    h1 { margin-top: 0; font-size: 2rem; line-height: 1.2; }
+    h2 { margin-top: 2rem; font-size: 1.25rem; }
+    a { color: #2563eb; }
+    .muted { color: #475569; }
+    .note { background: #eff6ff; border-left: 4px solid #2563eb; padding: 12px 14px; border-radius: 10px; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #020617; color: #e5e7eb; }
+      .card { background: #0f172a; border-color: #1e293b; }
+      .muted { color: #cbd5e1; }
+      .note { background: #0b2559; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <h1>ChildCare Schedules Support</h1>
+      <p class="muted">ChildCare Schedules is an offline childcare staff scheduling app. It creates schedules locally on your device and does not require a network connection for scheduling.</p>
+
+      <h2>Contact</h2>
+      <p>For help, questions, or bug reports, contact:</p>
+      <p><strong><a href="mailto:satrajit.roy@gmail.com">satrajit.roy@gmail.com</a></strong></p>
+      <p>When reporting an issue, please include:</p>
+      <ul>
+        <li>App version</li>
+        <li>Device model</li>
+        <li>iOS version</li>
+        <li>A short description of what you were trying to schedule</li>
+        <li>Whether the schedule involved more than 100 staff/workers or covered breaks, lunch, prep, or other off-floor duties</li>
+      </ul>
+      <p>Please do not send confidential staff, child, or workplace information unless necessary.</p>
+
+      <h2>Local scheduling and device limits</h2>
+      <p>ChildCare Schedules runs locally on your device. The app does not send schedule data to a server.</p>
+      <p>Most normal childcare schedules are phone-scale. Very large schedules, especially schedules with more than 100 staff/workers and covered breaks, lunch, prep, or other off-floor obligations, can require a large amount of memory. On iPhone, iOS may stop a heavy local run because of memory pressure or thermal protection. This is a device resource limit, not a scheduling-rule or soundness failure.</p>
+      <div class="note">To avoid device termination, follow the in-app phone-scale warnings. For very large covered-duty schedules, try reducing covered off-floor obligations, using built-in cover where appropriate, or testing a smaller scenario first.</div>
+
+      <h2>Verification note</h2>
+      <p>ChildCare Schedules uses a formally verified scheduling core. For bounded runs, any returned schedule is sound with respect to the encoded rules for that run.</p>
+      <p>The app does not claim completeness for every bounded run. Because practical search limits are used, “no schedule found” may mean no schedule was found within the configured bounds, not necessarily that no schedule exists mathematically.</p>
+
+      <h2>Data export</h2>
+      <p>Schedules and profiles stay on your device unless you choose to export or share them using iOS sharing features.</p>
+
+      <h2>Privacy</h2>
+      <p>Read the <a href="privacy.html">ChildCare Schedules Privacy Policy</a>.</p>
+    </section>
+  </main>
+</body>
+</html>
