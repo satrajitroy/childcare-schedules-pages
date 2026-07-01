@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChildCare Schedules Technical Integration Brief</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f8fafc; color: #0f172a; }
+    main { max-width: 860px; margin: 0 auto; padding: 48px 20px 72px; }
+    .card { background: white; border: 1px solid #e2e8f0; border-radius: 20px; padding: 28px; box-shadow: 0 10px 30px rgba(15,23,42,0.06); }
+    h1 { margin-top: 0; font-size: 2rem; line-height: 1.2; }
+    h2 { margin-top: 2rem; font-size: 1.25rem; }
+    a { color: #2563eb; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #020617; color: #e5e7eb; }
+      .card { background: #0f172a; border-color: #1e293b; }
+    }
+  </style>
+</head>
+<body><main><section class="card">
+<h1>ChildCare Schedules — Technical Integration Brief</h1>
+<p>ChildCare Schedules is an offline staff scheduling app backed by a formally verified exact-cover scheduling core. In this project, “verified” means that the scheduler core has been formally proven using the Rocq Prover: <a href="https://rocq-prover.org/">https://rocq-prover.org/</a></p>
+<h2>Exact-cover formulation</h2>
+<p>The scheduler converts childcare staffing rules into an exact-cover problem:</p>
+<ul>
+<li>Required classroom/time-period coverage cells are represented as primary constraints.</li>
+<li>Candidate assignments, such as assigning a staff member to a classroom, floater duty, break cover, lunch cover, or prep cover, are represented as rows.</li>
+<li>Availability, home-room preferences, age-group eligibility, floater rules, and off-floor obligations are represented as compatibility constraints and row metadata.</li>
+<li>A valid schedule is a set of selected rows that covers the required constraints exactly while avoiding conflicts such as placing the same staff member in two places at the same time.</li>
+</ul>
+<h2>Formal verification claim</h2>
+<p>In this project, “verified” means formally proven in Rocq, not merely tested on examples. Rocq is an interactive theorem prover / proof assistant used to write formal specifications, executable algorithms, and machine-checked proofs: <a href="https://rocq-prover.org/">https://rocq-prover.org/</a></p>
+<p>The verified core provides a soundness guarantee for returned schedules: if the engine returns a schedule, the selected assignments satisfy the encoded exact-cover rules for that bounded run.</p>
+<p>The app does not claim completeness for every bounded run. Because practical search fuel and bounds are used, “no schedule found” means no schedule was found within the configured bounds, not necessarily that no schedule exists mathematically.</p>
+<h2>Device-scale behavior</h2>
+<p>Recent phone tests show that schedules around 70 teachers across 20 classrooms can complete in minutes. In one covered-duty test without floaters, the schedule completed in about 106 seconds. With floaters and more coverage choices enabled, similar-sized runs can take around 7 minutes. Close-to-100 staff schedules may take significantly longer, especially with covered breaks, lunch, prep, floaters, or other off-floor obligations.</p>
+<p>The reason is combinatorial: the exact-cover search space grows exponentially as more staff, rooms, time slots, coverage choices, and cover obligations are combined. Very large covered-duty runs can consume too much memory. On iPhone, iOS may terminate a heavy local run under memory pressure or thermal protection. This is a device resource limit, not a soundness failure.</p>
+<h2>Mapping templates and user responsibility</h2>
+<p>The UI may generate starter maps such as room-to-group, staff-to-home-room, and staff-to-allowed-group maps. These are not inferred facts about the center. They are typing templates derived from the current roster, room list, group names, and simple default assumptions.</p>
+<p>For production integrations, the host product should treat these generated maps as draft data. The operator or integrating system must supply or confirm the real mappings: classroom age/eligibility group, staff home-room assignment if used, and staff certifications or allowed age groups. The solver then treats the confirmed maps as constraints.</p>
+<h2>Integration model</h2>
+<p>A childcare platform can integrate the scheduling core by mapping existing product data into a normalized scheduling problem:</p>
+<ul>
+<li>Staff roster</li>
+<li>Classroom roster</li>
+<li>Staff availability</li>
+<li>Classroom demand by time period</li>
+<li>Staff eligibility and home-room preferences</li>
+<li>Floater/relief staffing rules</li>
+<li>Break, lunch, prep, and off-floor duty policies</li>
+</ul>
+<p>The engine then returns a schedule that the host platform can render, export, audit, or adjust in its own UI.</p>
+<p><a href="support.html">Back to support</a></p>
+</section></main></body></html>

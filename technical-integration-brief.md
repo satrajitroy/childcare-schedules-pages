@@ -1,6 +1,6 @@
 # ChildCare Schedules — Technical Integration Brief
 
-ChildCare Schedules is an offline staff scheduling app backed by a formally verified exact-cover scheduling core.
+ChildCare Schedules is an offline staff scheduling app backed by a formally verified exact-cover scheduling core. In this project, “verified” means that the scheduler core has been formally proven using the Rocq Prover: https://rocq-prover.org/
 
 ## Exact-cover formulation
 
@@ -13,15 +13,17 @@ The scheduler converts childcare staffing rules into an exact-cover problem:
 
 ## Formal verification claim
 
-The verified core provides a soundness guarantee for returned schedules: if the engine returns a schedule, the selected assignments satisfy the encoded rules for that bounded run.
+In this project, “verified” means formally proven in Rocq, not merely tested on examples. Rocq is an interactive theorem prover / proof assistant used to write formal specifications, executable algorithms, and machine-checked proofs: https://rocq-prover.org/
+
+The verified core provides a soundness guarantee for returned schedules: if the engine returns a schedule, the selected assignments satisfy the encoded exact-cover rules for that bounded run.
 
 The app does not claim completeness for every bounded run. Because practical search fuel and bounds are used, “no schedule found” means no schedule was found within the configured bounds, not necessarily that no schedule exists mathematically.
 
 ## Device-scale behavior
 
-Recent phone tests show that schedules around 70 teachers across 20 classrooms can finish in about 7 minutes. Close-to-100 staff schedules may take significantly longer, especially with covered breaks, lunch, prep, or other off-floor obligations.
+Recent phone tests show that schedules around 70 teachers across 20 classrooms can complete in minutes. In one covered-duty test without floaters, the schedule completed in about 106 seconds. With floaters and more coverage choices enabled, similar-sized runs can take around 7 minutes. Close-to-100 staff schedules may take significantly longer, especially with covered breaks, lunch, prep, floaters, or other off-floor obligations.
 
-The reason is combinatorial: the exact-cover search space grows exponentially as more staff, rooms, time slots, and cover obligations are combined. Very large covered-duty runs can consume too much memory. On iPhone, iOS may terminate a heavy local run under memory pressure or thermal protection. This is a device resource limit, not a soundness failure.
+The reason is combinatorial: the exact-cover search space grows exponentially as more staff, rooms, time slots, coverage choices, and cover obligations are combined. Very large covered-duty runs can consume too much memory. On iPhone, iOS may terminate a heavy local run under memory pressure or thermal protection. This is a device resource limit, not a soundness failure.
 
 
 ## Mapping templates and user responsibility
