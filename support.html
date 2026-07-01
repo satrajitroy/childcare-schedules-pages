@@ -28,6 +28,14 @@
       <h1>ChildCare Schedules Support</h1>
       <p class="muted">ChildCare Schedules is an offline childcare staff scheduling app. It creates schedules locally on your device and does not require a network connection for scheduling.</p>
 
+
+      <h2>Help documents</h2>
+      <ul>
+        <li><a href="./user-manual.html">User Manual</a></li>
+        <li><a href="./testflight-quickstart.html">TestFlight Quick Start</a></li>
+        <li><a href="./technical-integration-brief.html">Technical Integration Brief</a></li>
+      </ul>
+
       <h2>Contact</h2>
       <p>For help, questions, or bug reports, contact:</p>
       <p><strong><a href="mailto:satrajit.roy@gmail.com">satrajit.roy@gmail.com</a></strong></p>
@@ -44,13 +52,13 @@
   
     <h2>Generated mapping templates</h2>
     <p>The app includes buttons such as <strong>Generate room → group map</strong>, <strong>Generate staff → home room map</strong>, and <strong>Generate eligibility from home rooms</strong>. These buttons are typing aids only. They create starter templates from the current roster, classroom list, group names, and preferred-room assumptions.</p>
-    <p>Before running a real schedule, users should review and correct these generated mappings so they match the actual center: each classroom's age/eligibility group, each staff member's home room if home rooms are used, and each staff member's real allowed groups or certifications.</p>
+    <p>Before running a real schedule, users should review and correct these generated mappings so they match the actual center: each classroom's age/eligibility group, each staff member's home room if home rooms are used, and each staff member's real allowed groups or certifications. The default sample keeps Pre-K and School Age as separate groups because many centers staff and approve those rooms differently.</p>
 
     <h2>Local scheduling and device limits</h2>
       <p>ChildCare Schedules runs locally on your device. The app does not send schedule data to a server.</p>
       <p>Most normal childcare schedules are phone-scale. Recent phone tests show that schedules around 70 teachers across 20 classrooms can complete in minutes. In one covered-duty test without floaters, the schedule completed in about 106 seconds. With floaters and more coverage choices enabled, similar-sized runs can take around 7 minutes.</p>
-      <p>Close-to-100 staff schedules may take significantly longer, especially with covered breaks, lunch, prep, floaters, or other off-floor obligations. The reason is combinatorial: the exact-cover search space grows exponentially as more staff, rooms, time slots, coverage choices, and cover obligations are combined. Very large covered-duty runs can consume too much memory. On iPhone, iOS may stop a heavy local run because of memory pressure or thermal protection. This is a device resource limit, not a scheduling-rule failure or a failure of the Rocq soundness proof.</p>
-      <div class="note">To avoid device termination, follow the in-app phone-scale warnings. For very large covered-duty schedules, try reducing covered off-floor obligations, using built-in cover where appropriate, or testing a smaller scenario first.</div>
+      <p>Close-to-100 staff schedules may take significantly longer, especially with covered breaks, lunch, prep, floaters, or other off-class time. The reason is combinatorial: the exact-cover search space grows exponentially as more staff, rooms, time slots, coverage choices, and cover obligations are combined. Very large covered-duty runs can consume too much memory. On iPhone, iOS may stop a heavy local run because of memory pressure or thermal protection. This is a device resource limit, not a scheduling-rule failure or a failure of the Rocq soundness proof.</p>
+      <div class="note">To avoid device termination, follow the in-app phone-scale warnings. For very large covered-duty schedules, try reducing covered off-class time, using built-in cover where appropriate, or testing a smaller scenario first.</div>
 
       <h2>Formal verification note</h2>
       <p>In this project, “verified” means that the scheduling core has been formally proven using the <a href="https://rocq-prover.org/">Rocq Prover</a>, an interactive theorem prover / proof assistant. This is not a claim that the app was merely tested on examples.</p>

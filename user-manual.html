@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ChildCare Schedules User Manual</title><style>
+:root { color-scheme: light dark; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; margin: 0; background: #f8fafc; color: #0f172a; }
+main { max-width: 860px; margin: 0 auto; padding: 44px 20px 72px; }
+.card { background: white; border: 1px solid #e2e8f0; border-radius: 20px; padding: 28px; box-shadow: 0 10px 30px rgba(15,23,42,0.06); }
+h1 { margin-top: 0; font-size: 2rem; line-height: 1.2; }
+h2 { margin-top: 2rem; font-size: 1.25rem; }
+h3 { margin-top: 1.35rem; }
+a { color: #2563eb; }
+code, pre { background: #f1f5f9; border-radius: 8px; }
+code { padding: 2px 5px; }
+pre { padding: 12px; overflow-x: auto; }
+.note { background: #eff6ff; border-left: 4px solid #2563eb; padding: 12px 14px; border-radius: 10px; }
+.muted { color: #475569; }
+.nav { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 28px; }
+.nav a { text-decoration: none; border: 1px solid #cbd5e1; border-radius: 999px; padding: 8px 12px; background: #fff; }
+@media (prefers-color-scheme: dark) {
+  body { background: #020617; color: #e5e7eb; }
+  .card { background: #0f172a; border-color: #1e293b; }
+  .muted { color: #cbd5e1; }
+  .note { background: #0b2559; }
+  code, pre { background: #111827; }
+  .nav a { background: #0f172a; border-color: #334155; }
+}
+</style></head>
+<body><main><section class="card"><div class="nav"><a href="./index.html">Help home</a><a href="./user-manual.html">User manual</a><a href="./testflight-quickstart.html">TestFlight quick start</a><a href="./support.html">Support</a><a href="./privacy.html">Privacy</a></div><h1>ChildCare Schedules — User Manual</h1>
+<p>ChildCare Schedules creates childcare staff schedules locally on your iPhone. It is designed for centers that need classroom coverage plus optional coverage for breaks, lunch, prep, and other off-floor duties.</p>
+<h2>1. What the app does</h2>
+<p>ChildCare Schedules helps you build a weekly classroom staffing plan from:</p>
+<ul>
+<li>your center or school name,</li>
+<li>staff and floater / cover staff lists,</li>
+<li>classrooms,</li>
+<li>child-count demand,</li>
+<li>room group rules,</li>
+<li>staff home-room rules,</li>
+<li>eligibility / certification rules,</li>
+<li>unavailable times, and</li>
+<li>off-floor duties such as breaks, lunch, and prep.</li>
+</ul>
+<p>The default export is compact: it includes the final classroom schedule plus Break, Lunch, and Prep columns. Full debug/audit output is available separately when needed.</p>
+<h2>2. Quick start</h2>
+<ol>
+<li>Open the app.</li>
+<li>Use the built-in sample profile or enter your own center name.</li>
+<li>Open <strong>Staff</strong> and choose how many teachers/core staff and floaters to use.</li>
+<li>Open <strong>Rooms</strong> and choose how many classrooms to use.</li>
+<li>Open <strong>Child Counts</strong> and check the demand periods.</li>
+<li>Open <strong>Breaks, Lunch & Prep</strong> and choose whether breaks, lunch, and prep require cover.</li>
+<li>Open <strong>Create</strong> and create the schedule.</li>
+<li>Open <strong>Results</strong> to view, export, or share the schedule.</li>
+</ol>
+<h2>3. Staff and floaters</h2>
+<p>The app separates regular teachers/core staff from floaters/cover staff.</p>
+<ul>
+<li><strong>Number of teachers/core staff to use</strong> selects from the teacher/core staff list.</li>
+<li><strong>Number of floaters to use</strong> selects from the floater/cover staff list.</li>
+</ul>
+<p>This lets you test a regular-only schedule and then explicitly add floaters without pretending that floaters are regular classroom teachers.</p>
+<p>Example:</p>
+<ul>
+<li>100 teachers listed</li>
+<li>34 floaters listed</li>
+<li>Teachers/core staff to use: 70</li>
+<li>Floaters to use: 20</li>
+<li>Total selected staff: 90</li>
+</ul>
+<h2>4. Floater role</h2>
+<p>Floaters can be configured in two broad ways:</p>
+<ul>
+<li><strong>Cover-only</strong>: floaters are used primarily for relief/cover duties.</li>
+<li><strong>Flexible staffing</strong>: floaters may also be used as classroom staff when the schedule needs them.</li>
+</ul>
+<p>Cover-only works best when home-room rules are on and the regular classroom staffing pattern is already meaningful. Flexible staffing works best when the scheduler may place any eligible staff member where needed.</p>
+<h2>5. Rooms and child counts</h2>
+<p>The room list is the set of classrooms the app may schedule. The selected room count must not exceed the listed rooms.</p>
+<p>Child counts determine staffing demand by time period. The app uses these demand settings to decide how many staff lines are needed in each classroom/time period.</p>
+<h2>6. Room groups, home rooms, and eligibility</h2>
+<p>The app can use optional mapping rules:</p>
+<ul>
+<li><strong>Room → group map</strong>: which classroom belongs to which age/eligibility group. The default sample treats Pre-K and School Age as separate groups because many centers staff and approve those rooms differently.</li>
+<li><strong>Staff → home room map</strong>: each staff member’s assigned home room, if home-room rules are enabled.</li>
+<li><strong>Staff → allowed groups map</strong>: which age/eligibility groups each staff member may work with.</li>
+</ul>
+<p>The app can generate starter maps to reduce typing. These generated maps are only templates. You must review and correct them so they match your center’s real classroom groups, staff assignments, and certifications.</p>
+<h2>7. Unavailable times</h2>
+<p>Use unavailable-time rules when a staff member cannot work at a specific time. These are name-based restrictions. Leave them blank if everyone is available.</p>
+<h2>8. Breaks, lunch, prep, and cover modes</h2>
+<p>The off-class time section controls whether breaks, lunch, prep, and similar duties are treated as covered obligations.</p>
+<p>Available modes:</p>
+<ul>
+<li><strong>Built-in or floater cover</strong>: the scheduler may use surplus classroom staffing or a named floater/cover staff member.</li>
+<li><strong>Built-in staffing only</strong>: named relief cover is disabled; the schedule succeeds only when surplus staffing already covers the room.</li>
+<li><strong>Reminders only — cover not checked</strong>: the app records reminders but does not verify cover. This mode requires explicit confirmation and exports should be read as reminders, not as a coverage-verified schedule.</li>
+</ul>
+<p>The floater capacity pre-check is a quick estimate. It helps identify clearly insufficient floater capacity before running a large search, but the final schedule still depends on the full set of constraints.</p>
+<h2>9. Creating a schedule</h2>
+<p>Open <strong>Create</strong> and run the scheduler. Large schedules can take time because the app is solving a combinatorial exact-cover problem locally on the device.</p>
+<p>Recent phone tests show that schedules around 70 teachers across 20 classrooms can complete in minutes. In one covered-duty test without floaters, the schedule completed in about 106 seconds. With floaters and more coverage choices enabled, similar-sized runs can take around 7 minutes.</p>
+<p>Close-to-100 staff schedules may take significantly longer, especially with covered breaks, lunch, prep, floaters, or other off-class time. Very large local runs can consume substantial memory; iOS may terminate a heavy run under memory pressure or thermal protection.</p>
+<p>This is a phone resource warning, not a scheduler correctness warning.</p>
+<h2>10. Results and exports</h2>
+<p>The Results section shows each returned schedule.</p>
+<p>The default view includes classroom assignments plus Break/Lunch/Prep columns. Use the in-app option to hide off-class columns if you want a classroom-only view. If no extra name is shown on a Break/Lunch/Prep entry, coverage is built-in staffing.</p>
+<p>Export options may include:</p>
+<ul>
+<li><strong>CSV</strong> for spreadsheet workflows,</li>
+<li><strong>PDF</strong> for printing or sharing,</li>
+<li><strong>JSON</strong> for structured data / integration workflows,</li>
+<li><strong>Full output</strong> for query, raw rows, audit, and detail tables.</li>
+</ul>
+<h2>11. What “formally proven using Rocq” means</h2>
+<p>The scheduling engine is an exact-cover solver formally proven using the Rocq Prover: <a href="https://rocq-prover.org/">https://rocq-prover.org/</a></p>
+<p>The Rocq proof is a soundness proof: if the app returns a schedule, the returned schedule satisfies the exact-cover rules it was given for that bounded run.</p>
+<p>The app does not claim completeness for every bounded run. Because production runs use practical search bounds, a “no schedule found” result means no schedule was found within the configured bounds, not necessarily that no schedule exists mathematically.</p>
+<h2>12. Privacy and data</h2>
+<p>Scheduling is performed locally on the device. The app is intended for adult planning use and does not require login, cloud sync, ads, analytics, or a scheduling server.</p>
+<p>Do not use the app as a place to store sensitive child records, medical records, payroll records, or confidential personnel files. Data leaves the device only when you choose to export or share it through iOS sharing features.</p>
+<h2>13. Troubleshooting</h2>
+<h3>No schedule found</h3>
+<p>Try reducing constraints or checking for conflicts:</p>
+<ul>
+<li>lower the number of rooms or demand lines,</li>
+<li>add floaters,</li>
+<li>widen break/lunch/prep windows,</li>
+<li>turn off home-room restrictions,</li>
+<li>check room-group and eligibility maps,</li>
+<li>remove impossible unavailable-time rules.</li>
+</ul>
+<h3>App becomes slow or iOS closes it</h3>
+<p>The schedule may be too large for the current phone-scale run. Try reducing staff/rooms, reducing covered break/lunch/prep blocks, or running with fewer floaters.</p>
+<h3>Export is too large</h3>
+<p>Use the compact export. Turn on full output only when you need diagnostics, raw rows, or audit information.</p>
+<h3>A generated map looks wrong</h3>
+<p>Generated maps are starter templates, not facts. Open the map and edit it to match your center.</p></section></main></body></html>
