@@ -30,7 +30,7 @@
 
       <h2>Contact</h2>
       <p>For help, questions, or bug reports, contact:</p>
-      <p><strong><a href="mailto:satrajit.roy@gmail.com">satrajit.roy@gmail.com</a></strong></p>
+      <p><strong><a href="mailto:support@example.com">support@example.com</a></strong></p>
       <p>When reporting an issue, please include:</p>
       <ul>
         <li>App version</li>
@@ -41,14 +41,25 @@
       </ul>
       <p>Please do not send confidential staff, child, or workplace information unless necessary.</p>
 
-      <h2>Local scheduling and device limits</h2>
+  
+    <h2>Generated mapping templates</h2>
+    <p>The app includes buttons such as <strong>Generate room → group map</strong>, <strong>Generate staff → home room map</strong>, and <strong>Generate eligibility from home rooms</strong>. These buttons are typing aids only. They create starter templates from the current roster, classroom list, group names, and preferred-room assumptions.</p>
+    <p>Before running a real schedule, users should review and correct these generated mappings so they match the actual center: each classroom's age/eligibility group, each staff member's home room if home rooms are used, and each staff member's real allowed groups or certifications.</p>
+
+    <h2>Local scheduling and device limits</h2>
       <p>ChildCare Schedules runs locally on your device. The app does not send schedule data to a server.</p>
-      <p>Most normal childcare schedules are phone-scale. Very large schedules, especially schedules with more than 100 staff/workers and covered breaks, lunch, prep, or other off-floor obligations, can require a large amount of memory. On iPhone, iOS may stop a heavy local run because of memory pressure or thermal protection. This is a device resource limit, not a scheduling-rule or soundness failure.</p>
+      <p>Most normal childcare schedules are phone-scale. Recent phone tests show that schedules around 70 teachers across 20 classrooms can finish in about 7 minutes.</p>
+      <p>Close-to-100 staff schedules may take significantly longer, especially with covered breaks, lunch, prep, or other off-floor obligations. The reason is combinatorial: the exact-cover search space grows exponentially as more staff, rooms, time slots, and cover obligations are combined. Very large covered-duty runs can consume too much memory. On iPhone, iOS may stop a heavy local run because of memory pressure or thermal protection. This is a device resource limit, not a scheduling-rule or soundness failure.</p>
       <div class="note">To avoid device termination, follow the in-app phone-scale warnings. For very large covered-duty schedules, try reducing covered off-floor obligations, using built-in cover where appropriate, or testing a smaller scenario first.</div>
 
       <h2>Verification note</h2>
       <p>ChildCare Schedules uses a formally verified scheduling core. For bounded runs, any returned schedule is sound with respect to the encoded rules for that run.</p>
       <p>The app does not claim completeness for every bounded run. Because practical search limits are used, “no schedule found” may mean no schedule was found within the configured bounds, not necessarily that no schedule exists mathematically.</p>
+
+      <h2>Technical overview for integration partners</h2>
+      <p>The scheduling problem is encoded as an exact-cover problem. Required coverage cells, such as classroom/time-period assignments, are modeled as primary constraints that must be covered exactly. Candidate assignments, such as a particular staff member covering a particular room or duty, become rows. Optional compatibility rules, availability, home-room preferences, floater cover, and off-floor duties are encoded as additional constraints and row metadata.</p>
+      <p>The verified core searches for a set of rows that covers the required constraints without conflicts. This formulation is useful for childcare software platforms because the verified scheduling engine can sit behind an existing product UI: the platform can collect rosters, classroom demand, attendance, staff availability, and policy settings, then pass a normalized scheduling problem to the engine and receive a schedule that is sound with respect to the encoded rules.</p>
+      <p>The formal proof is a soundness guarantee: when the engine returns a schedule, the selected assignments satisfy the encoded exact-cover constraints. The app intentionally uses bounded search for practical on-device operation, so it does not claim that every “no schedule found” result proves global mathematical impossibility.</p>
 
       <h2>Data export</h2>
       <p>Schedules and profiles stay on your device unless you choose to export or share them using iOS sharing features.</p>
