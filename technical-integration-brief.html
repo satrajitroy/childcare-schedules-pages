@@ -20,7 +20,7 @@
 </head>
 <body><main><section class="card">
 <h1>ChildCare Schedules — Technical Integration Brief</h1>
-<p>ChildCare Schedules is an offline staff scheduling app backed by a formally verified exact-cover scheduling core. In this project, “verified” means that the scheduler core has been formally proven using the Rocq Prover: <a href="https://rocq-prover.org/">https://rocq-prover.org/</a></p>
+<p>ChildCare Schedules is an offline staff scheduling app backed by an exact-cover scheduling core formally proven using the Rocq Prover: <a href="https://rocq-prover.org/">https://rocq-prover.org/</a></p>
 <h2>Exact-cover formulation</h2>
 <p>The scheduler converts childcare staffing rules into an exact-cover problem:</p>
 <ul>
@@ -31,11 +31,11 @@
 </ul>
 <h2>Formal verification claim</h2>
 <p>In this project, “verified” means formally proven in Rocq, not merely tested on examples. Rocq is an interactive theorem prover / proof assistant used to write formal specifications, executable algorithms, and machine-checked proofs: <a href="https://rocq-prover.org/">https://rocq-prover.org/</a></p>
-<p>The verified core provides a soundness guarantee for returned schedules: if the engine returns a schedule, the selected assignments satisfy the encoded exact-cover rules for that bounded run.</p>
+<p>The Rocq proof is a soundness proof for returned schedules: if the engine returns a schedule, the selected assignments satisfy the encoded exact-cover rules for that bounded run.</p>
 <p>The app does not claim completeness for every bounded run. Because practical search fuel and bounds are used, “no schedule found” means no schedule was found within the configured bounds, not necessarily that no schedule exists mathematically.</p>
 <h2>Device-scale behavior</h2>
 <p>Recent phone tests show that schedules around 70 teachers across 20 classrooms can complete in minutes. In one covered-duty test without floaters, the schedule completed in about 106 seconds. With floaters and more coverage choices enabled, similar-sized runs can take around 7 minutes. Close-to-100 staff schedules may take significantly longer, especially with covered breaks, lunch, prep, floaters, or other off-floor obligations.</p>
-<p>The reason is combinatorial: the exact-cover search space grows exponentially as more staff, rooms, time slots, coverage choices, and cover obligations are combined. Very large covered-duty runs can consume too much memory. On iPhone, iOS may terminate a heavy local run under memory pressure or thermal protection. This is a device resource limit, not a soundness failure.</p>
+<p>The reason is combinatorial: the exact-cover search space grows exponentially as more staff, rooms, time slots, coverage choices, and cover obligations are combined. Very large covered-duty runs can consume too much memory. On iPhone, iOS may terminate a heavy local run under memory pressure or thermal protection. This is a device resource limit, not a failure of the Rocq soundness proof.</p>
 <h2>Mapping templates and user responsibility</h2>
 <p>The UI may generate starter maps such as room-to-group, staff-to-home-room, and staff-to-allowed-group maps. These are not inferred facts about the center. They are typing templates derived from the current roster, room list, group names, and simple default assumptions.</p>
 <p>For production integrations, the host product should treat these generated maps as draft data. The operator or integrating system must supply or confirm the real mappings: classroom age/eligibility group, staff home-room assignment if used, and staff certifications or allowed age groups. The solver then treats the confirmed maps as constraints.</p>
@@ -51,5 +51,5 @@
 <li>Break, lunch, prep, and off-floor duty policies</li>
 </ul>
 <p>The engine then returns a schedule that the host platform can render, export, audit, or adjust in its own UI.</p>
-<p><a href="support.html">Back to support</a></p>
-</section></main></body></html>
+</section></main></body>
+</html>

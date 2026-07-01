@@ -49,30 +49,24 @@
     <h2>Local scheduling and device limits</h2>
       <p>ChildCare Schedules runs locally on your device. The app does not send schedule data to a server.</p>
       <p>Most normal childcare schedules are phone-scale. Recent phone tests show that schedules around 70 teachers across 20 classrooms can complete in minutes. In one covered-duty test without floaters, the schedule completed in about 106 seconds. With floaters and more coverage choices enabled, similar-sized runs can take around 7 minutes.</p>
-      <p>Close-to-100 staff schedules may take significantly longer, especially with covered breaks, lunch, prep, floaters, or other off-floor obligations. The reason is combinatorial: the exact-cover search space grows exponentially as more staff, rooms, time slots, coverage choices, and cover obligations are combined. Very large covered-duty runs can consume too much memory. On iPhone, iOS may stop a heavy local run because of memory pressure or thermal protection. This is a device resource limit, not a scheduling-rule or soundness failure.</p>
+      <p>Close-to-100 staff schedules may take significantly longer, especially with covered breaks, lunch, prep, floaters, or other off-floor obligations. The reason is combinatorial: the exact-cover search space grows exponentially as more staff, rooms, time slots, coverage choices, and cover obligations are combined. Very large covered-duty runs can consume too much memory. On iPhone, iOS may stop a heavy local run because of memory pressure or thermal protection. This is a device resource limit, not a scheduling-rule failure or a failure of the Rocq soundness proof.</p>
       <div class="note">To avoid device termination, follow the in-app phone-scale warnings. For very large covered-duty schedules, try reducing covered off-floor obligations, using built-in cover where appropriate, or testing a smaller scenario first.</div>
 
       <h2>Formal verification note</h2>
       <p>In this project, “verified” means that the scheduling core has been formally proven using the <a href="https://rocq-prover.org/">Rocq Prover</a>, an interactive theorem prover / proof assistant. This is not a claim that the app was merely tested on examples.</p>
-      <p>For bounded runs, the proof establishes soundness of returned schedules: when the solver returns a schedule, the selected assignments satisfy the encoded exact-cover rules for that run.</p>
+      <p>For bounded runs, the Rocq proof establishes soundness of returned schedules: when the solver returns a schedule, the selected assignments satisfy the encoded exact-cover rules for that run.</p>
       <p>The app does not claim completeness for every bounded run. Because practical search fuel and limits are used, “no schedule found” may mean no schedule was found within the configured bounds, not necessarily that no schedule exists mathematically.</p>
 
       <h2>Technical overview for integration partners</h2>
       <p>The scheduling problem is encoded as an exact-cover problem. Required coverage cells, such as classroom/time-period assignments, are modeled as primary constraints that must be covered exactly. Candidate assignments, such as a particular staff member covering a particular room or duty, become rows. Optional compatibility rules, availability, home-room preferences, floater cover, and off-floor duties are encoded as additional constraints and row metadata.</p>
-      <p>The verified core searches for a set of rows that covers the required constraints without conflicts. This formulation is useful for childcare software platforms because the verified scheduling engine can sit behind an existing product UI: the platform can collect rosters, classroom demand, attendance, staff availability, and policy settings, then pass a normalized scheduling problem to the engine and receive a schedule that is sound with respect to the encoded rules.</p>
-      <p>The formal proof is a soundness guarantee: when the engine returns a schedule, the selected assignments satisfy the encoded exact-cover constraints. The app intentionally uses bounded search for practical on-device operation, so it does not claim that every “no schedule found” result proves global mathematical impossibility. The proof work is implemented in Rocq; learn more at <a href="https://rocq-prover.org/">rocq-prover.org</a>.</p>
+      <p>The Rocq-proven core searches for a set of rows that covers the required constraints without conflicts. This formulation is useful for childcare software platforms because the verified scheduling engine can sit behind an existing product UI: the platform can collect rosters, classroom demand, attendance, staff availability, and policy settings, then pass a normalized scheduling problem to the engine and receive a schedule that is sound with respect to the encoded rules.</p>
+      <p>The formal Rocq proof is a soundness guarantee: when the engine returns a schedule, the selected assignments satisfy the encoded exact-cover constraints. The app intentionally uses bounded search for practical on-device operation, so it does not claim that every “no schedule found” result proves global mathematical impossibility. The proof work is implemented in Rocq; learn more at <a href="https://rocq-prover.org/">rocq-prover.org</a>.</p>
 
       <h2>Data export</h2>
       <p>Schedules and profiles stay on your device unless you choose to export or share them using iOS sharing features.</p>
 
       <h2>Privacy</h2>
       <p>Read the <a href="privacy.html">ChildCare Schedules Privacy Policy</a>.</p>
-
-      <h2>Technical integration</h2>
-      <p>
-        For software vendors interested in integration, see the
-        <a href="./technical-integration-brief.html">technical integration brief</a>.
-      </p>
     </section>
   </main>
 </body>
